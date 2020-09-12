@@ -1,0 +1,18 @@
+<div class="container">
+<div class="row">
+  <div class="col-3">
+
+            <div class="panel panel-default panel-info rv-rightpan" > 
+              <div class="panel-heading">Notificaciones - Eventos de la BlockChain</div>
+              <div class="panel-body">
+                  Transacciones validadas en esta sesión <br>
+                  {{ today | date: 'dd/MM/yyyy' }}. <br>
+                  <ul *ngFor="let evento of eventosBC">
+                         {{evento}} <br>
+                  </ul> 
+              </div>
+          </div>
+  </div> 
+  </div>
+</div> 
+ 

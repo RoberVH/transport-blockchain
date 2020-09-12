@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-9">
+        <!--  Panel para seleccionar parametros de escucha de personal en Parada-->
+        <div id="param-in"  [ngClass]="{ active: !listaP.mostrarPersonal}" class="jumbotron" style="padding: 10px" >
+          <h3>Registro de Personal en Ruta/Parada</h3><br>
+              <p><span>Id Ruta= </span><b>{{listaP.rutaId}}</b></p><br>
+              <p><span>Id Operador= </span><b>{{listaP.IdOperador}}</b></p><br>
+              <p>Seleccione la Parada:</p>
+              <select [disabled]="listaP.mostrarPersonal" [(ngModel)]="listaP.parada">
+                <option *ngFor="let paradas of listaP.paradasRuta" [value]="paradas">{{paradas}} </option>
+              </select><br><br>
+              <p>Introduzca la lista de personal a monitorear (separado por "," ): </p>
+                  <input [disabled]="listaP.mostrarPersonal" [(ngModel)]="personalAdscrito">
+              <div *ngIf="listaP.mostrarPersonal">
+                  <p>Personal esperado en: {{listaP.parada}}</p>
+                  <table>
+                    <tr *ngFor="let empleados of listaP.personal">
+                      <td>{{empleados}}</td>
+                    </tr>
+                  </table>
+              </div>                  
+        </div>
+        <br><br>
+
+        <!-- Botones de control-->
+              <div  class="btn-group" style="width:40%">
+                  <button (click)="otraParada();"    [disabled]="!listaP.mostrarPersonal" type="button"  class="btn btn-primary">Restablecer</button>
+                  <button (click)="salvarParadas();" [disabled]="listaP.mostrarPersonal"  type="button"  class="btn btn-primary">Observar</button>
+            </div>
+  
+        <!-- Panel de parametros seleccionados-->          
+          <div class="col-md-5">
+              <br>
+          <div *ngIf="listaP.faltante">
+              <div class="alert alert-warning" role="alert" style="color:red;margin: 4px">
+                  <strong>¡Alerta!</strong> <span> Siguiente personal no ha abordado en {{listaP.parada}}:</span>
+                <table>
+                  <tr *ngFor="let empleados of listaP.lfaltantes" style="margin: 15px">
+                    <td>{{empleados}}</td>
+                  </tr>
+                </table>
+              </div>
+          </div>
+        </div>
+
+    </div>
+</div>

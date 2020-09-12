@@ -1,0 +1,178 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<div class="modal fade" id="addAssetModal" tabindex="-1" role="dialog" aria-labelledby="addAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addAssetModalLabel">Crear Registro</h4>
+          <p class="modal-intro">Introduzca valores requeridos.</p>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+              <div class="form-group text-left">
+                <label for="IdAsistencia">Id Asistencia</label>
+                  <input formControlName="IdAsistencia" type="text" class="form-control">
+              </div>
+              <div class="form-group text-left">
+                <label for="IdRuta">Id Ruta</label>
+                  <input formControlName="IdRuta" type="text" class="form-control">
+              </div>
+              <div class="form-group text-left">
+                <label for="IdOperador">Id Operador</label>
+                  <input formControlName="IdOperador" type="text" class="form-control">
+              </div>
+              <div class="form-group text-left">
+                <label for="parada">Parada</label>
+                  <input formControlName="parada" type="text" class="form-control">
+              </div>
+              <div class="form-group text-left">
+                <label for="fabordaje">Fecha Abordaje</label>
+                  <input formControlName="fabordaje" type="text" class="form-control">
+              </div>
+              <div class="form-group text-left">
+                <label for="personal">Personal</label>
+                  <input formControlName="personal" type="text" class="form-control">
+              </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="updateAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="updateAssetModalLabel">Actualizar Registro</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+            <div class="form-group text-left">
+              <label for="IdAsistencia">Id Asistencia</label>
+                <input [ngModel]="IdAsistencia" formControlName="IdAsistencia" class="form-control" disabled="disabled">  
+            </div>
+            <div class="form-group text-left">
+              <label for="IdRuta">Id Ruta</label>
+                <input [ngModel]="IdRuta"formControlName="IdRuta" type="text" class="form-control">
+            </div>
+            <div class="form-group text-left">
+              <label for="IdOperador">Id Operador</label>
+                <input [ngModel]="IdOperador"formControlName="IdOperador" type="text" class="form-control">
+            </div>
+            <div class="form-group text-left">
+              <label for="parada">Parada</label>
+                <input [ngModel]="parada"formControlName="parada" type="text" class="form-control">
+            </div>
+            <div class="form-group text-left">
+              <label for="fabordaje">fabordaje</label>
+                <input [ngModel]="fabordaje"formControlName="fabordaje" type="text" class="form-control">
+            </div>
+            <div class="form-group text-left">
+              <label for="personal">Personal</label>
+                <input [ngModel]="personal"formControlName="personal" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button (click)="updateAsset(myForm)" type="submit" class="btn btn-success" data-dismiss="modal">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteAssetModalLabel">Borrar Registro</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+            ¿Seguro quiere borrar este Registro?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Si</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		<strong>Error:</strong> {{errorMessage}}
+	</div>
+  
+  <div class="row">
+    <div class="col-md-3">
+        <h1 class="asset-title" id='assetName'>Asistencia</h1>
+    </div>
+    <div class="col-md-5">
+      <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">
+
+        Crear Registro
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-responsive">
+        <thead class="thead">
+          <tr class="thead-cols">
+              <th class="info">Id Asistencia</th>
+              <th class="info">Id Ruta</th>
+              <th class="info">Id Operador</th>
+              <th class="info">Paradas</th>
+              <th class="info">Fecha/Hora Abordaje</th>
+              <th class="info">Personal</th>
+              <th class="info-actions">Acciones</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of allAssets">
+                <td class="asset-properties">{{asset.IdAsistencia}}</td>
+                <td class="asset-properties">{{asset.IdRuta}}</td>
+                <td class="asset-properties">{{asset.IdOperador}}</td>
+                <td class="asset-properties">{{asset.parada}}</td>
+                <td class="asset-properties">{{asset.fabordaje}}</td>
+                <td class="asset-properties">{{asset.personal}}</td>
+            <td>
+              <button (click)="getForm(asset.IdAsistencia);" type="button" class="btn btn-update" data-toggle="modal" class="glyphicon glyphicon-pencil" data-target="#updateAssetModal">
+              </button>
+              <button (click)="setId(asset.IdAsistencia);" type="button" class="btn btn-delete" data-toggle="modal"  class="glyphicon glyphicon-trash" data-target="#deleteAssetModal">
+
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

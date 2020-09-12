@@ -1,0 +1,54 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- <nav class="navbar navbar-inverse"> -->
+<div class="row">
+    <div class="col-md-10" style="width: 70%;padding:0%">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand">Control Asistencias</span>
+          </div>
+      <ul class="nav navbar-nav  rv-puntero">
+        <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown">Administrador<span class="caret"></span></a>
+            <ul class="dropdown-menu scrollable-menu">
+                <li><a [routerLink]="['/crearRuta']">Crear Ruta</a></li>
+                <li><a [routerLink]="['/ruta']">Rutas</a></li>
+                <li><a [routerLink]="['/asistencia']">Asistencias</a></li>
+            </ul>
+        </li>
+        <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown">Operador<span class="caret"></span></a>
+              <ul class="dropdown-menu scrollable-menu">
+                <li><a [routerLink]="['/reportaAsistencia']">Reportar Asistencias</a></li>
+              </ul>
+        </li>
+        <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown">Jefe Personal<span class="caret"></span></a>
+              <ul class="dropdown-menu scrollable-menu">
+                  <li><a [routerLink]="['/enlistar']">Enlista personal</a></li>
+              </ul>
+        </li>     
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+<!--      <li> <button class="btn-link" onclick="alert('hola')"><i class="fa fa-info-circle"></i>Acerca</button></li>  -->
+<!--      <li><a href="#" onlick="alert('hola')"><i class="fa fa-info-circle"></i> Acerca</a></li> -->
+          <li><a href="#" onclick="alert('Control de Asistencias\n\nUna aplicación de Blockchain\n      HYPERLEDGER  \n          Julio 2018')"><span class="glyphicon glyphicon-info-sign"></span> Acerca</a></li>    
+      </ul>
+    </div>
+  </nav>
+  </div>
+</div>
+  <router-outlet></router-outlet>
+  <app-avisos></app-avisos>

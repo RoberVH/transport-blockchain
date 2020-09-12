@@ -1,0 +1,13 @@
+.rv-rightpan {
+    height: 100%;
+    
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right:0;
+    overflow-x: scroll;
+    padding-top: 0px;
+    width:30%;
+
+
+}

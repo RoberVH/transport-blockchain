@@ -1,0 +1,82 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.effortium.transpo
+
+asset ruta identified by IdRuta {
+  o String      IdRuta
+  o String      IdOperador
+  o String[]    paradas
+  o DateTime    fInicio     optional
+  o DateTime    fFin        optional
+}
+
+/*
+Registra en cada parada la lista de personal (id de identificacion de cada persona) que ha abordado la Unidad
+*/
+asset asistencia identified by  IdAsistencia {
+  o String      IdAsistencia
+  o String      IdRuta
+  o String      IdOperador
+  o String      parada 
+  o DateTime    fabordaje  
+  o String[]    personal    
+}
+
+/*  
+Jefe de Personal crea y asigna una ruta a un operador
+*/
+transaction crearRuta {
+  o String      IdRuta
+  o String      IdOperador
+  o String[]    paradas
+}
+
+
+/*
+Notificar al operador que se le ha asignado una ruta
+*/
+event rutaAsignada {
+  o String      IdRuta
+  o String      IdOperador
+  o String[]    paradas
+}
+
+
+/*  
+Operador registra en cada parada la lista del personal que abordo
+*/
+
+transaction reportaAsistencia {
+  o String      IdRuta
+  o String      IdOperador
+  o String      parada
+  o DateTime    fabordaje
+  o String[]    personal 
+}
+
+/*
+Notifica que se ha registrado una lista de personal que abordo en una parada de la ruta
+*/
+event reporteAbordaje {
+  o String      IdRuta
+  o String      IdOperador
+  o DateTime    fabordaje
+  o String[]    personal
+  o String      parada
+}

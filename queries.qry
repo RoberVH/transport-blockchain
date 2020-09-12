@@ -1,0 +1,15 @@
+// Consulta todas las asistencias de una ruta - Search all attendants of Bus Route
+query asistenciasxRuta {
+  description: "Regresa todas las asistencias de  una ruta"
+  statement:  
+    SELECT  org.effortium.transpo.asistencia
+    WHERE (IdRuta == _$Id_Ruta)
+}
+
+// Para consultar todas las paradas de una ruta  - Consult all Bus stops of Route
+query paradasxRuta {
+  description: "Regresa la ruta"
+  statement:  
+    SELECT  org.effortium.transpo.ruta
+    WHERE (IdRuta == _$Id_Ruta)
+}
