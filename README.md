@@ -26,7 +26,7 @@ An HLF BNA chain code was created using HLF Composer and its code (query and mod
 
 Folder asiste1 contains Angular code.
 
-The interface to Hyperledger Fabric chaincode from Angular code is through an automatic-generated  Restful API  Server (https://developer.ibm.com/recipes/tutorials/interacting-with-hyperledger-composer-through-restful-api/) and the app itself was scaffold with Yeoman tool
+The interface to Hyperledger Fabric chaincode from Angular code is through an automatic-generated  Restful API  Server (https://developer.ibm.com/recipes/tutorials/interacting-with-hyperledger-composer-through-restful-api/) and the app itself was initially scaffolded with Yeoman tool
 
 asiste1 implements functions that in a production environment would be at different devices/platforms but it was helpful to show ideas.
 The whole system was build on a Ubuntu Virtual Machine and docker containers.
